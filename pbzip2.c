@@ -38,9 +38,9 @@ int main(int argc, char **argv)
     FILE *source_p = fopen(argv[1], "r");
     FILE *dest_p = fopen("output.txt.bz2", "w");
 
-    // Print reminder to include seconde argument
+    // Print reminder to include second argument
     if (argv[2] == NULL)
-        printf("Make sure to include a second argument "
+        printf("Please, include a second argument "
             "for the number of threads.\n");
 
     // Get number of threads from command line and set
@@ -48,7 +48,7 @@ int main(int argc, char **argv)
     omp_set_num_threads(numThreads);
     
     // Initialize compression method parameters
-    int blockSize = 5;
+    int blockSize = 9;
     int verbosity = 0;
     int workFactor = 0;
     unsigned int sourceLen = numThreads * blockSize * 100000;
