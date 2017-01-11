@@ -69,13 +69,13 @@ int main(int argc, char **argv)
 	int bytesRead = fread(source, sizeof(char), sourceLen, source_p);
 
         // Break if there is nothing left to write
- 		if (bytesRead == 0)
- 			break;
+ 	if (bytesRead == 0)
+ 	    break;
 
         // Cover cases where the number of bytes read is less than the
         // amount we were aiming to read
- 		if (bytesRead < sourceLen)
- 			sourceLen = bytesRead;
+ 	if (bytesRead < sourceLen)
+ 	    sourceLen = bytesRead;
 
         // Update destLen and destLenArr
         destLen = 1.01 * sourceLen + 600;
@@ -110,7 +110,7 @@ int main(int argc, char **argv)
 
         // Write compressed data to file
         for (int i = 0; i < numThreads; ++i)
-        	fwrite(dest[i], sizeof(char), destLenArr[i], dest_p);
+            fwrite(dest[i], sizeof(char), destLenArr[i], dest_p);
     }
 
     free(source);
@@ -119,6 +119,7 @@ int main(int argc, char **argv)
     fclose(source_p);
     fclose(dest_p);
 
+    // End program timer, compute runtime, and print
     double end_time = omp_get_wtime();
 
     double time = end_time - start_time;
